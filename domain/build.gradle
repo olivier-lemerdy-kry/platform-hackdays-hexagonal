@@ -1,0 +1,29 @@
+plugins {
+    alias(libs.plugins.spring.boot) apply false
+    alias(libs.plugins.spring.dependencies.management)
+    id 'java'
+}
+
+group = 'se.kry.hackdays.hexagonal'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24' // How to strip the version number here?
+
+    testImplementation('org.assertj:assertj-core')
+    testImplementation('org.hamcrest:hamcrest')
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation('org.mockito:mockito-core')
+    testImplementation('org.mockito:mockito-junit-jupiter')
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,1 +1,20 @@
 rootProject.name = 'platform-hackdays-hexagonal'
+
+include 'domain'
+include 'application'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            version('java', '17')
+            version('spring-boot', '3.0.1')
+            version('spring-dependencies-management', '1.1.0')
+            version('testcontainers', '1.17.6')
+
+            library('testcontainers-bom', 'org.testcontainers', 'testcontainers-bom').versionRef('testcontainers')
+
+            plugin('spring-boot', 'org.springframework.boot').versionRef('spring-boot')
+            plugin('spring-dependencies-management', 'io.spring.dependency-management').versionRef('spring-dependencies-management')
+        }
+    }
+}
